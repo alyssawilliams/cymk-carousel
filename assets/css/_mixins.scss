@@ -1,0 +1,7 @@
+// Centers the items content vertically and horizontally using flexbox
+@mixin flex-center($direction: row) {
+	display: flex;
+	flex-direction: $direction;
+	align-items: center;
+	justify-content: center;
+}

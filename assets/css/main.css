@@ -1,3 +1,83 @@
+body, html {
+  height: 100%; }
 
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+
+.carouselTitle {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  line-height: 1;
+  top: -65px; }
+
+.cymkcarousel {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; }
+
+.carouselControl {
+  position: absolute;
+  background-color: #fff;
+  color: #ccc;
+  border: none;
+  font-size: 72px;
+  width: 200px;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer; }
+  .carouselControl:hover {
+    color: #ccc;
+    text-decoration: none; }
+  .carouselControl.leftArrow {
+    left: 0px; }
+  .carouselControl.rightArrow {
+    right: 0px; }
+
+.carouselSlide {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; }
+
+.carouselCard {
+  margin: 0 20px;
+  cursor: pointer; }
+  .carouselCard:first-of-type {
+    margin-left: 0; }
+  .carouselCard:last-of-type {
+    margin-right: 0; }
+
+.carouselImage {
+  width: 250px; }
+
+.carouselDotContainer {
+  position: absolute;
+  margin: 0;
+  bottom: -50px;
+  cursor: default; }
+
+.carouselDot {
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  border: 2px solid #ccc;
+  margin: 0 10px;
+  border-radius: 50%;
+  cursor: pointer; }
+  .carouselDot:hover {
+    background-color: #000;
+    border-color: #000; }
 
 /*# sourceMappingURL=main.css.map */
