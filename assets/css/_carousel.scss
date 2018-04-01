@@ -25,6 +25,8 @@
 	padding-left: 50px;
 	padding-right: 50px;
 
+	@include flex-center();
+
 	@media (max-width: 768px) {
 		margin: 20px 0;
 	}
@@ -32,6 +34,13 @@
 
 
 // Images
+.carouselSlide {
+	display: none;
+
+	&.active { display: flex; }
+
+}
+
 .carouselCard {
 	cursor: pointer;
 	max-width: 50%;
@@ -59,6 +68,7 @@
 	@media (min-width: 768px) {
 		&:hover, &:focus {
 			opacity: 1;
+			outline: none;
 		}
 	}
 

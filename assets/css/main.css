@@ -30,10 +30,19 @@ body {
 .carouselWrapper {
   margin: 40px 0;
   padding-left: 50px;
-  padding-right: 50px; }
+  padding-right: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; }
   @media (max-width: 768px) {
     .carouselWrapper {
       margin: 20px 0; } }
+
+.carouselSlide {
+  display: none; }
+  .carouselSlide.active {
+    display: flex; }
 
 .carouselCard {
   cursor: pointer;
@@ -58,7 +67,8 @@ body {
   transition: opacity 0.25s ease-in; }
   @media (min-width: 768px) {
     .carouselControl:hover, .carouselControl:focus {
-      opacity: 1; } }
+      opacity: 1;
+      outline: none; } }
   .carouselControl.leftArrow {
     left: 0px; }
     @media (min-width: 768px) {
