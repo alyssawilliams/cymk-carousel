@@ -1,3 +1,17 @@
+$(document).ready(function() {
+	var timer;
+	startTimer(3000);
+});
+
+function startTimer(interval) {
+	timer = setInterval(play, interval);	
+}
+
+function pauseTimer() {
+	clearInterval(timer);
+	startTimer(3000);
+};
+
 // Displays both controls when you hover over the carousel
 $('.carouselWrapper').hover(function() {
 	$('.carouselControl').addClass('carouselControlActive');
@@ -51,16 +65,20 @@ function rewind() {
 
 // Moves the carousel back one slide when you click the left arrow
 $('.carouselControl.leftArrow').click(function() {
+	pauseTimer();
 	rewind();
 });
 
 // Moves the carousel forward one slide when you click the right arrow
 $('.carouselControl.rightArrow').click(function() {
+	pauseTimer();
 	play();
 });
 
 // Goes to the associated slide when you click on a dot
 $('.carouselDot').click(function(event) {
+	pauseTimer();
+
 	$('.carouselDot.active').removeClass('active');
 	$(this).addClass('active');
 
