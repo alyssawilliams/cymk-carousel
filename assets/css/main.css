@@ -5,24 +5,42 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+  font-size: 14px; }
 
 .carouselTitle {
   text-align: center;
   text-transform: uppercase;
-  font-size: 28px;
   font-weight: bold;
-  position: absolute;
-  line-height: 1;
-  top: -65px; }
+  font-size: 1.3em; }
+  @media (min-width: 768px) {
+    .carouselTitle {
+      font-size: 2em; } }
 
 .cymkcarousel {
   position: relative;
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center; }
+  .cymkcarousel > {
+    flex: 1; }
+
+.carouselWrapper {
+  margin: 40px 0;
+  padding-left: 50px;
+  padding-right: 50px; }
+  @media (max-width: 768px) {
+    .carouselWrapper {
+      margin: 20px 0; } }
+
+.carouselCard {
+  cursor: pointer;
+  max-width: 50%; }
+  @media (max-width: 768px) {
+    .carouselCard {
+      padding: 8px; } }
 
 .carouselControl {
   position: absolute;
@@ -30,42 +48,34 @@ body {
   color: #ccc;
   border: none;
   font-size: 72px;
-  width: 200px;
   height: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  cursor: pointer; }
-  .carouselControl:hover {
-    color: #ccc;
-    text-decoration: none; }
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.25s ease-in; }
+  @media (min-width: 768px) {
+    .carouselControl:hover, .carouselControl:focus {
+      opacity: 1; } }
   .carouselControl.leftArrow {
     left: 0px; }
+    @media (min-width: 768px) {
+      .carouselControl.leftArrow {
+        padding-right: 40px; } }
   .carouselControl.rightArrow {
     right: 0px; }
+    @media (min-width: 768px) {
+      .carouselControl.rightArrow {
+        padding-left: 40px; } }
 
-.carouselSlide {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center; }
-
-.carouselCard {
-  margin: 0 20px;
-  cursor: pointer; }
-  .carouselCard:first-of-type {
-    margin-left: 0; }
-  .carouselCard:last-of-type {
-    margin-right: 0; }
-
-.carouselImage {
-  width: 250px; }
+@media (min-width: 768px) {
+  .carouselControlActive {
+    opacity: 1; } }
 
 .carouselDotContainer {
-  position: absolute;
   margin: 0;
-  bottom: -50px;
   cursor: default; }
 
 .carouselDot {
@@ -76,7 +86,7 @@ body {
   margin: 0 10px;
   border-radius: 50%;
   cursor: pointer; }
-  .carouselDot:hover {
+  .carouselDot:hover, .carouselDot.active {
     background-color: #000;
     border-color: #000; }
 

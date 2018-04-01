@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>CYMK Carousel</title>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -11,18 +12,18 @@
 
 	<div class="cymkcarousel">
 		<h1 class="carouselTitle">Michael Kors Spring 2018</h1>
-		<button class="carouselControl leftArrow">〈</button>
-		<div class="carouselWrapper">
-			<div class="carouselSlide">
-				<div class="carouselCard"><img class="carouselImage" src="/assets/images/prod1/1.jpg" alt=""></div>
-				<div class="carouselCard"><img class="carouselImage" src="/assets/images/prod1/2.jpg" alt=""></div>
-				<div class="carouselCard"><img class="carouselImage" src="/assets/images/prod1/3.jpg" alt=""></div>
-				<div class="carouselCard"><img class="carouselImage" src="/assets/images/prod1/4.jpg" alt=""></div>
+		<button class="carouselControl leftArrow activateControl">〈</button>
+		<div class="carouselWrapper container activateControl">
+			<div class="carouselSlide row">
+				<div class="carouselCard col-sm-6 col-md-3"><img class="carouselImage img-fluid" src="/assets/images/prod2/1.jpg" alt=""></div>
+				<div class="carouselCard col-sm-6 col-md-3"><img class="carouselImage img-fluid" src="/assets/images/prod2/2.jpg" alt=""></div>
+				<div class="carouselCard col-sm-6 col-md-3"><img class="carouselImage img-fluid" src="/assets/images/prod2/3.jpg" alt=""></div>
+				<div class="carouselCard col-sm-6 col-md-3"><img class="carouselImage img-fluid" src="/assets/images/prod2/4.jpg" alt=""></div>
 			</div>
 		</div>
-		<button href="" class="carouselControl rightArrow">〉</button>
+		<button href="" class="carouselControl rightArrow activateControl">〉</button>
 		<ul class="carouselDotContainer">
-			<li class="carouselDot"></li>
+			<li class="carouselDot active"></li>
 			<li class="carouselDot"></li>
 			<li class="carouselDot"></li>
 			<li class="carouselDot"></li>

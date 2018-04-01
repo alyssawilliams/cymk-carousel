@@ -2,57 +2,91 @@
 .carouselTitle {
 	text-align: center;
 	text-transform: uppercase;
-	font-size: 28px;
 	font-weight: bold;
-	position: absolute;
-	line-height: 1;
-	top: -65px;
+	font-size: 1.3em;
+
+	@media (min-width: 768px) { 
+		font-size: 2em;
+	}
 }
 
+// Carousel
 .cymkcarousel {
 	position: relative;
 	width: 100%;
-	@include flex-center();
+	@include flex-center(column);
+
+	& > { flex: 1; }
+
 }
 
+.carouselWrapper {
+	margin: 40px 0;
+	padding-left: 50px;
+	padding-right: 50px;
+
+	@media (max-width: 768px) {
+		margin: 20px 0;
+	}
+}
+
+
+// Images
+.carouselCard {
+	cursor: pointer;
+	max-width: 50%;
+
+	@media (max-width: 768px) {
+		padding: 8px;
+	}
+}
+
+
+// Controls
 .carouselControl {
 	position: absolute;
 	background-color: #fff;
 	color: #ccc;
 	border: none;
 	font-size: 72px;
-	width: 200px;
 	height: 100%;
 	@include flex-center();
 	cursor: pointer;
+	opacity: 0;
+	transition: opacity 0.25s ease-in;
 
-	&:hover {
-		color: #ccc;
-		text-decoration: none;
+
+	@media (min-width: 768px) {
+		&:hover, &:focus {
+			opacity: 1;
+		}
 	}
 
-	&.leftArrow  { left: 0px; }
-	&.rightArrow { right: 0px; }
+	&.leftArrow  { 
+		left: 0px;
+
+		@media (min-width: 768px) {
+			padding-right: 40px;
+		}
+	}
+
+	&.rightArrow { 
+		right: 0px;
+
+		@media (min-width: 768px) {
+			padding-left: 40px;
+		}
+	}
 }
 
-.carouselSlide { @include flex-center(); }
-
-.carouselCard {
-	margin: 0 20px;
-	cursor: pointer;
-
-	&:first-of-type { margin-left: 0; }
-	&:last-of-type  { margin-right: 0; }
-}
-
-.carouselImage {
-	width: 250px;
+.carouselControlActive {
+	@media (min-width: 768px) {
+		opacity: 1;
+	}
 }
 
 .carouselDotContainer {
-	position: absolute;
 	margin: 0;
-	bottom: -50px;
 	cursor: default;
 }
 
@@ -65,7 +99,7 @@
 	border-radius: 50%;
 	cursor: pointer;
 
-	&:hover {
+	&:hover, &.active {
 		background-color: #000;
 		border-color: #000;
 	}
