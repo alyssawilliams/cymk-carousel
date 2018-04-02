@@ -76,7 +76,7 @@ $('.carouselControl.rightArrow').click(function() {
 });
 
 // Goes to the associated slide when you click on a dot
-$('.carouselDot').click(function(event) {
+$('.carouselDot').click(function() {
 	pauseTimer();
 
 	$('.carouselDot.active').removeClass('active');

@@ -9,3 +9,16 @@ $(document.documentElement).keydown(function (event) {
    play();
   }
 });
+
+// Enables touch gestures on mobile
+var hammertime = new Hammer($('.carouselWrapper')[0]);
+
+hammertime.on('swipeleft', function() {
+  pauseTimer();
+  play();
+});
+
+hammertime.on('swiperight', function() {
+  pauseTimer();
+  rewind();
+});
