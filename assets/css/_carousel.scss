@@ -10,6 +10,7 @@
 	}
 }
 
+
 // Carousel
 .cymkcarousel {
 	position: relative;
@@ -24,8 +25,9 @@
 	margin: 40px 0;
 	padding-left: 50px;
 	padding-right: 50px;
-
+	position: relative;
 	@include flex-center();
+	justify-content: flex-start;
 
 	@media (max-width: 768px) {
 		margin: 20px 0;
@@ -35,10 +37,17 @@
 
 // Images
 .carouselSlide {
-	display: none;
+	z-index: -1;
 
-	&.active { display: flex; }
-
+	@media (min-width: 768px) {
+		min-width: 1040px;
+    margin-right: 120px;
+    margin-left: -10px;
+	}
+	
+	min-width: 470px;
+	margin-right: 100px;
+	margin-left: -20px;
 }
 
 .carouselCard {
@@ -58,18 +67,22 @@
 	color: #ccc;
 	border: none;
 	font-size: 72px;
+	width: 15%;
 	height: 100%;
 	@include flex-center();
 	cursor: pointer;
 	opacity: 0;
 	transition: opacity 0.25s ease-in;
+	z-index: 1;
 
-
+	// FIX: Right contol overlaps carousel in mobile
 	@media (min-width: 768px) {
-		&:hover, &:focus {
-			opacity: 1;
-			outline: none;
-		}
+		width: 10%;
+	}
+
+	&:hover, &:focus {
+		opacity: 1;
+		outline: none;
 	}
 
 	&.leftArrow  { 
@@ -107,9 +120,8 @@
 	border: 2px solid #ccc;
 	margin: 0 10px;
 	border-radius: 50%;
-	cursor: pointer;
 
-	&:hover, &.active {
+	&.active {
 		background-color: #000;
 		border-color: #000;
 	}

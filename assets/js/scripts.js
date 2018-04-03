@@ -1,88 +1,93 @@
 $(document).ready(function() {
-	var timer;
-	startTimer(3000);
+ startCarousel();
 });
 
-function startTimer(interval) {
-	timer = setInterval(play, interval);	
+var run;
+var direction = "forward";
+
+// Moves the carousel forward every 3 seconds
+function startCarousel() {
+	var speed = 3000;
+
+	if (direction == "forward") {
+		run = setInterval('play()', speed);  
+	}
+	else if (direction == "backward") {
+		run = setInterval('rewind()', speed);  
+	}
+}
+
+var wrapperWidth = $('.carouselWrapper').outerWidth(); 
+var leftValue = wrapperWidth * (-1); 
+
+// Moves the last slide to the first (out of sight) position, so the user can press the back arrow
+$('.carouselSlide:first').before($('.carouselSlide:last'));
+$('.carouselWrapper').css({'left' : leftValue});
+
+
+function play() {
+	var leftAnimate = parseInt($('.carouselWrapper').css('left')) - wrapperWidth;
+
+	$('.carouselWrapper').animate({'left' : leftAnimate}, 300, function () {
+			// Adds the active class to the slide in view
+			$('.carouselSlide.active').removeClass('active');
+			$('.carouselSlide').eq(2).addClass('active');
+
+			// Adds the active class to the dot that indicates the active slide
+			$('.carouselDot.active').removeClass('active');
+			var slideNumber = $('.carouselSlide.active').data('carouselCount');
+			$('.carouselDot[data-carousel-count="' + slideNumber + '"').addClass('active');
+
+			// Moves the last slide to the beginning of the queue
+			$('.carouselSlide:last').after($('.carouselSlide:first'));                  
+			$('.carouselWrapper').css({'left' : leftValue});
+	});
+}
+
+function rewind() {
+	var leftAnimate = parseInt($('.carouselWrapper').css('left')) + wrapperWidth;
+	
+	$('.carouselWrapper').animate({'left' : leftAnimate}, 300, function () {
+			// Adds the active class to the slide in view
+			$('.carouselSlide.active').removeClass('active');
+			$('.carouselSlide').eq(2).addClass('active');
+
+			// FIX: Indicator dots when going backwards
+			// Adds the active class to the dot that indicates the active slide
+			$('.carouselDot.active').removeClass('active');
+			var slideNumber = $('.carouselSlide.active').data('carouselCount');
+			$('.carouselDot[data-carousel-count="' + slideNumber + '"').addClass('active');
+
+			// Moves the first slide to the beginning of the queue
+			$('.carouselSlide:first').before($('.carouselSlide:last'));                  
+			$('.carouselWrapper').css({'left' : leftValue});
+	});
 }
 
 function pauseTimer() {
-	clearInterval(timer);
-	startTimer(3000);
+	clearInterval(run);
 };
 
-// Displays both controls when you hover over the carousel
-$('.carouselWrapper').hover(function() {
-	$('.carouselControl').addClass('carouselControlActive');
-}, function() {
-	$('.carouselControl').removeClass('carouselControlActive');
-});
-
-// Moves the carousel forward
-function play() {
-	var nextSlide;
-
-	// If this is the last slide, loop back around to the first slide
-	if ($('.carouselSlide.active').is(':last-child')) {
-		nextSlide = $('.carouselSlide:first-child');
-	}
-	else {
-		nextSlide = $('.carouselSlide.active').next();
-	}
-
-	$('.carouselSlide.active').removeClass('active');
-	$('.carouselSlide.active').addClass('active');
-	nextSlide.addClass('active');
-
-	// Move the carousel dot along
-	$('.carouselDot.active').removeClass('active');
-	var nextSlideNumber = nextSlide.data('carouselCount');
-	$('.carouselDot[data-carousel-count="' + nextSlideNumber + '"').addClass('active');
-};
-
-// Moves the carousel backward
-function rewind() {
-	var prevSlide;
-
-	// If this is the first slide, go back to the last slide
-	if ($('.carouselSlide.active').is(':first-child')) {
-		prevSlide = $('.carouselSlide:last-child');
-	}
-	else {
-		prevSlide = $('.carouselSlide.active').prev();
-	}
-
-	$('.carouselSlide.active').removeClass('active');
-	$('.carouselSlide.active').addClass('active');
-	prevSlide.addClass('active');
-
-	// Move the carousel dot along
-	$('.carouselDot.active').removeClass('active');
-	var prevSlideNumber = prevSlide.data('carouselCount');
-	$('.carouselDot[data-carousel-count="' + prevSlideNumber + '"').addClass('active');
-};
-
-// Moves the carousel back one slide when you click the left arrow
-$('.carouselControl.leftArrow').click(function() {
-	pauseTimer();
-	rewind();
-});
-
-// Moves the carousel forward one slide when you click the right arrow
 $('.carouselControl.rightArrow').click(function() {
 	pauseTimer();
 	play();
-});
+	startCarousel();
+});  
 
-// Goes to the associated slide when you click on a dot
-$('.carouselDot').click(function() {
+$('.carouselControl.leftArrow').click(function() {
 	pauseTimer();
+	rewind();
+	startCarousel();
+}); 
 
-	$('.carouselDot.active').removeClass('active');
-	$(this).addClass('active');
 
-	var slideNumber = $(this).data('carouselCount');
-	$('.carouselSlide.active').removeClass('active');
-	$('.carouselSlide[data-carousel-count="' + slideNumber + '"').addClass('active');
+var resizeTimer;
+
+$(window).on('resize', function(e) {
+	clearTimeout(resizeTimer);
+	resizeTimer = setTimeout(function() {
+
+		location.reload();
+						
+	}, 250);
 });
