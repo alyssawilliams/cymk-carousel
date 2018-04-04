@@ -47,7 +47,7 @@ body {
     right: 0; }
   @media (max-width: 576px) {
     .cymkcarousel {
-      height: 55%; } }
+      height: 65%; } }
 
 .carouselWrapper {
   margin: 40px 0;
@@ -73,6 +73,12 @@ body {
   @media (max-width: 768px) {
     .carouselCard {
       padding: 10px; } }
+  @media only screen and (orientation: landscape) {
+    .carouselCard {
+      -webkit-box-flex: 0;
+      -ms-flex: 0 0 25%;
+      flex: 0 0 25%;
+      max-width: 25%; } }
 
 .carouselControl {
   position: absolute;
