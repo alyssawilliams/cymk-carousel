@@ -5,7 +5,7 @@
 	font-weight: bold;
 	font-size: 1.3em;
 
-	@media (min-width: 768px) { 
+	@media (min-width: 768px) {
 		font-size: 2em;
 	}
 }
@@ -19,35 +19,51 @@
 
 	& > { flex: 1; }
 
+	&:before {
+		opacity: 1;
+		content: '';
+		display: block;
+		height: 100%;
+		width: 10%;
+		background-color: #fff;
+		position: absolute;
+		left: 0;
+	}
+
+	&:after {
+		opacity: 1;
+		content: '';
+		display: block;
+		height: 100%;
+		width: 10%;
+		background-color: #fff;
+		position: absolute;
+		right: 0;
+	}
+
+	@media (max-width: 576px) {
+		height: 55%;
+	}
 }
 
 .carouselWrapper {
 	margin: 40px 0;
-	padding-left: 50px;
-	padding-right: 50px;
+	padding: 0;
 	position: relative;
 	@include flex-center();
 	justify-content: flex-start;
-
-	@media (max-width: 768px) {
-		margin: 20px 0;
-	}
+	width: 80%;
 }
 
 
 // Images
 .carouselSlide {
 	z-index: -1;
+	margin: 0;
 
-	@media (min-width: 768px) {
-		min-width: 1040px;
-    margin-right: 120px;
-    margin-left: -10px;
+	@media (max-width: 768px) {
+		padding: 30px;
 	}
-	
-	min-width: 470px;
-	margin-right: 100px;
-	margin-left: -20px;
 }
 
 .carouselCard {
@@ -55,7 +71,7 @@
 	max-width: 50%;
 
 	@media (max-width: 768px) {
-		padding: 8px;
+		padding: 10px;
 	}
 }
 
@@ -63,21 +79,23 @@
 // Controls
 .carouselControl {
 	position: absolute;
-	background-color: #fff;
+	background-color: transparent;
 	color: #ccc;
 	border: none;
 	font-size: 72px;
-	width: 15%;
+	width: 13%;
 	height: 100%;
-	@include flex-center();
 	cursor: pointer;
 	opacity: 0;
 	transition: opacity 0.25s ease-in;
 	z-index: 1;
+	@include flex-center();
 
-	// FIX: Right contol overlaps carousel in mobile
-	@media (min-width: 768px) {
-		width: 10%;
+	@media (max-width: 768px) {
+		width: 20%;
+
+		&.leftArrow  { padding-right: 10%; }
+		&.rightArrow { padding-left: 10%; }
 	}
 
 	&:hover, &:focus {
@@ -85,21 +103,8 @@
 		outline: none;
 	}
 
-	&.leftArrow  { 
-		left: 0px;
-
-		@media (min-width: 768px) {
-			padding-right: 40px;
-		}
-	}
-
-	&.rightArrow { 
-		right: 0px;
-
-		@media (min-width: 768px) {
-			padding-left: 40px;
-		}
-	}
+	&.leftArrow  { left: 0px; }
+	&.rightArrow { right: 0px; }
 }
 
 .carouselControlActive {
@@ -110,6 +115,7 @@
 
 .carouselDotContainer {
 	margin: 0;
+	padding: 0;
 	cursor: default;
 }
 

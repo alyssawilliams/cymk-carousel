@@ -1,13 +1,13 @@
 body, html {
-  height: 100%; }
+  height: 100%;
+  overflow: hidden; }
 
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
-  overflow: hidden; }
+  font-size: 14px; }
 
 .carouselTitle {
   text-align: center;
@@ -27,71 +27,83 @@ body {
   justify-content: center; }
   .cymkcarousel > {
     flex: 1; }
+  .cymkcarousel:before {
+    opacity: 1;
+    content: '';
+    display: block;
+    height: 100%;
+    width: 10%;
+    background-color: #fff;
+    position: absolute;
+    left: 0; }
+  .cymkcarousel:after {
+    opacity: 1;
+    content: '';
+    display: block;
+    height: 100%;
+    width: 10%;
+    background-color: #fff;
+    position: absolute;
+    right: 0; }
+  @media (max-width: 576px) {
+    .cymkcarousel {
+      height: 55%; } }
 
 .carouselWrapper {
   margin: 40px 0;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding: 0;
   position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  justify-content: flex-start; }
-  @media (max-width: 768px) {
-    .carouselWrapper {
-      margin: 20px 0; } }
+  justify-content: flex-start;
+  width: 80%; }
 
 .carouselSlide {
   z-index: -1;
-  min-width: 470px;
-  margin-right: 100px;
-  margin-left: -20px; }
-  @media (min-width: 768px) {
+  margin: 0; }
+  @media (max-width: 768px) {
     .carouselSlide {
-      min-width: 1040px;
-      margin-right: 120px;
-      margin-left: -10px; } }
+      padding: 30px; } }
 
 .carouselCard {
   cursor: pointer;
   max-width: 50%; }
   @media (max-width: 768px) {
     .carouselCard {
-      padding: 8px; } }
+      padding: 10px; } }
 
 .carouselControl {
   position: absolute;
-  background-color: #fff;
+  background-color: transparent;
   color: #ccc;
   border: none;
   font-size: 72px;
-  width: 15%;
+  width: 13%;
   height: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
   opacity: 0;
   transition: opacity 0.25s ease-in;
-  z-index: 1; }
-  @media (min-width: 768px) {
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; }
+  @media (max-width: 768px) {
     .carouselControl {
-      width: 10%; } }
+      width: 20%; }
+      .carouselControl.leftArrow {
+        padding-right: 10%; }
+      .carouselControl.rightArrow {
+        padding-left: 10%; } }
   .carouselControl:hover, .carouselControl:focus {
     opacity: 1;
     outline: none; }
   .carouselControl.leftArrow {
     left: 0px; }
-    @media (min-width: 768px) {
-      .carouselControl.leftArrow {
-        padding-right: 40px; } }
   .carouselControl.rightArrow {
     right: 0px; }
-    @media (min-width: 768px) {
-      .carouselControl.rightArrow {
-        padding-left: 40px; } }
 
 @media (min-width: 768px) {
   .carouselControlActive {
@@ -99,6 +111,7 @@ body {
 
 .carouselDotContainer {
   margin: 0;
+  padding: 0;
   cursor: default; }
 
 .carouselDot {

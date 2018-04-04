@@ -7,7 +7,6 @@ $(document.documentElement).keydown(function (event) {
   } else if (event.keyCode == 39) {
    // Moves the carousel forward one slide when you press the right arrow key
    pauseTimer();
-   play();
    startCarousel();
   }
 });
@@ -17,7 +16,6 @@ var hammertime = new Hammer($('.carouselWrapper')[0]);
 
 hammertime.on('swipeleft', function() {
   pauseTimer();
-  play();
   startCarousel();
 });
 
